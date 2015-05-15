@@ -289,6 +289,7 @@ typedef NS_ENUM(NSInteger, ATLBubbleViewContentType) {
 
 - (void)menuControllerDisappeared
 {
+    //self.weakTextView.overrideNextResponder = nil;
     [self.longPressMask removeFromSuperview];
     self.longPressMask = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
