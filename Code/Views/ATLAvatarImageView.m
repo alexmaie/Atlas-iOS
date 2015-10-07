@@ -110,7 +110,13 @@ NSString *const ATLAvatarImageViewAccessibilityLabel = @"ATLAvatarImageViewAcces
 - (void)setAvatarItem:(id<ATLAvatarItem>)avatarItem
 {
     if ([avatarItem avatarImageURL]) {
-        self.initialsLabel.text = nil;
+        //fallback if avatar is not available on the server
+        if(avatarItem.avatarInitials){
+            self.initialsLabel.text = avatarItem.avatarInitials;
+        }else{
+            self.initialsLabel.text = nil;
+        }
+        //load avatar from server
         [self loadAvatarImageWithURL:[avatarItem avatarImageURL]];
     } else if (avatarItem.avatarImage) {
         self.initialsLabel.text = nil;
